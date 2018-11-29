@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <script src="thrift.js"></script>
+    <script src="API.js"></script>
+    <script src="Signature.js"></script>
+    <script src="api_types.js"></script>
+
+    <title>CREDITS API JS Demo</title>
+    <script>
+        function run()
+        {
+            var url = "http://localhost:8081";
+            var transport = new Thrift.Transport(url);
+            console.log("debug step 1");
+            var protocol = new Thrift.Protocol(transport);
+            console.log("debug step 2");
+            var client = new APIClient(protocol);
+            console.log("debug step 3");
+
+            var PublicKeyFrom = "H5ptdUUfjJBGiK2X3gN2EzNYxituCUUnXv2tiMdQKP3b";
+            var BytePublicKeyFrom = Base58.decode(PublicKeyFrom);
+
+            console.log("debug step 4");
+            var obj = client.BalanceGet(BytePublicKeyFrom, 1);
+
+            console.log("debug step 5");
+            console.log(obj);
+            console.log("debug step 6");
+
+            document.getElementById('pc-id').innerText = PublicKeyFrom;
+            document.getElementById('bl-id').innerText = 'Integral: ' + obj.amount.integral + ', Fraction: ' + obj.amount.fraction;
+        }
+        function ready() {
+            run();
+        }
+        document.addEventListener("DOMContentLoaded", ready);
+    </script>
+</head>
+<body>
+    <h1 >Public Key</h1>
+    <dl></dl>
+    <h2 id="pc-id">Empty</h2>
+    
+    <h1>Balance</h1>
+    <dl></dl>
+    <h2 id="bl-id">0</h2>
+</body>
+</html>
