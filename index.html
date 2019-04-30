@@ -15,12 +15,12 @@
     <script>
         function run()
         {
-            var url = "http://169.38.89.217:8081";
+            var url = "http://127.0.0.1:8081";
             var transport = new Thrift.Transport(url);
             var protocol = new Thrift.Protocol(transport);
             var client = new APIClient(protocol);
 
-            var PublicKeyFrom = "5B3YXqDTcWQFGAqEJQJP3Bg1ZK8FFtHtgCiFLT5VAxpe";
+            var PublicKeyFrom = "your address";
             var BytePublicKeyFrom = from_b58(PublicKeyFrom);
 
             var obj = client.WalletBalanceGet(BytePublicKeyFrom);
