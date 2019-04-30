@@ -20,7 +20,7 @@
             var protocol = new Thrift.Protocol(transport);
             var client = new APIClient(protocol);
 
-            var PublicKeyFrom = "your address";
+            var PublicKeyFrom = "your public key";
             var BytePublicKeyFrom = from_b58(PublicKeyFrom);
 
             var obj = client.WalletBalanceGet(BytePublicKeyFrom);
