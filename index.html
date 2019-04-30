@@ -6,32 +6,26 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
     <script src="thrift.js"></script>
-    <script src="API.js"></script>
-    <script src="general_types.js"></script>
-    <script src="api_types.js"></script>
+    <script src="api/API.js"></script>
+    <script src="general/general_types.js"></script>
+    <script src="api/api_types.js"></script>
     <script src="base58.js"></script>
 
     <title>CREDITS API JS Demo</title>
     <script>
         function run()
         {
-            var url = "http://localhost:8081";
+            var url = "http://169.38.89.217:8081";
             var transport = new Thrift.Transport(url);
-            console.log("debug step 1");
             var protocol = new Thrift.Protocol(transport);
-            console.log("debug step 2");
             var client = new APIClient(protocol);
-            console.log("debug step 3");
 
             var PublicKeyFrom = "5B3YXqDTcWQFGAqEJQJP3Bg1ZK8FFtHtgCiFLT5VAxpe";
             var BytePublicKeyFrom = from_b58(PublicKeyFrom);
 
-            console.log("debug step 4");
             var obj = client.WalletBalanceGet(BytePublicKeyFrom);
 
-            console.log("debug step 5");
             console.log(obj);
-            console.log("debug step 6");
 
             document.getElementById('pc-id').innerText = PublicKeyFrom;
             document.getElementById('bl-id').innerText = 'Integral: ' + obj.balance.integral + ', Fraction: ' + obj.balance.fraction;
