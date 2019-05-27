@@ -15,7 +15,7 @@
     <script>
         function run()
         {
-            var url = "http://127.0.0.1:8081";
+            var url = "http://your node's ip:8081";
             var transport = new Thrift.Transport(url);
             var protocol = new Thrift.Protocol(transport);
             var client = new APIClient(protocol);

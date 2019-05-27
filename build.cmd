@@ -4,8 +4,8 @@ rmdir /S /Q thrift
 rmdir /S /Q api
 rmdir /S /Q general
 
-git clone https://github.com/CREDITSCOM/CS-API
+git clone https://github.com/CREDITSCOM/thrift-interface-definitions
 mkdir api
 mkdir general
-thrift.exe -gen js -out .\api .\CS-API\api.thrift
-thrift.exe -gen js -out .\general .\CS-API\general.thrift
+thrift.exe -gen js -out .\api .\thrift-interface-definitions\api.thrift
+thrift.exe -gen js -out .\general .\thrift-interface-definitions\general.thrift
